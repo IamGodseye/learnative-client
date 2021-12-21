@@ -23,7 +23,9 @@ const SingleCourse = ({ course }) => {
     state: { user },
   } = useContext(Context);
   const checkEnrollment = async () => {
-    const { data } = await axios.get(`/api/check-enrollment/${course._id}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/check-enrollment/${course._id}`
+    );
     console.log(data);
     setEnrolled(data);
   };
@@ -40,7 +42,9 @@ const SingleCourse = ({ course }) => {
       if (!user) router.push("/login");
       if (enrolled.status)
         return router.push(`/user/course/${enrolled.course.slug}`);
-      const { data } = await axios.post(`/api/paid-enrollment/${course._id}`);
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/paid-enrollment/${course._id}`
+      );
 
       const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
       stripe.redirectToCheckout({ sessionId: data });
@@ -58,7 +62,9 @@ const SingleCourse = ({ course }) => {
       if (enrolled.status)
         return router.push(`/user/course/${enrolled.course.slug}`);
       setLoading(true);
-      const { data } = await axios.post(`/api/free-enrollment/${course._id}`);
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/free-enrollment/${course._id}`
+      );
       toast.success("✅ " + data.message);
       setLoading(false);
       router.push(`/user/course/${data.course.slug}`);

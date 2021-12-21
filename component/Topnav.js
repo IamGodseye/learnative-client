@@ -53,6 +53,9 @@ const Topnav = () => {
         mode="horizontal"
         selectedKeys={[current]}
         className="top-nav1 mb-2 nav "
+        style={{
+          width: "100vw",
+        }}
       >
         <Item
           key="/landing"
@@ -89,7 +92,7 @@ const Topnav = () => {
           <Link href="/">
             <a className="top-nav nav">
               {" "}
-              <UilHouseUser id="icon" /> App
+              <UilHouseUser id="icon" /> Home
             </a>
           </Link>
         </Item>

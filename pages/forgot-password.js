@@ -5,7 +5,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-
+import Head from "next/head";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
@@ -26,7 +26,10 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/forgot-password", { email });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/forgot-password`,
+        { email }
+      );
       setSuccess(true);
       toast.success("✅ Check your email for the secret code");
       setLoading(false);
@@ -42,11 +45,14 @@ const ForgotPassword = () => {
     //return;
     try {
       setLoading(true);
-      const { data } = await axios.post("/api/reset-password", {
-        email,
-        code,
-        newPassword,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/reset-password`,
+        {
+          email,
+          code,
+          newPassword,
+        }
+      );
       setEmail("");
       setCode("");
       setNewPassowrd("");
@@ -55,11 +61,15 @@ const ForgotPassword = () => {
     } catch (err) {
       setLoading(false);
       var s = err.response.data;
-      toast.error(`❌ ${s}`);
+      toast.error(`⚠️ ${s}`);
     }
   };
   return (
     <>
+      <Head>
+        <title>Learnative - Forgot Password</title>
+        {/* Add meta data for better SEO */}
+      </Head>
       <h1 className="jumbotron text-center bg-primary square">
         Forgot Password
       </h1>

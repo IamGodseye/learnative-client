@@ -25,31 +25,42 @@ const SingleCourse = () => {
   const [updateState, setUpdateState] = useState(false);
   const { slug } = router.query;
   const loadCourse = async () => {
-    const { data } = await axios.get(`/api/user/course/${slug}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/api/user/course/${slug}`
+    );
     setCourse(data);
   };
   const markCompleted = async () => {
-    const { data } = await axios.post(`/api/mark-completed`, {
-      courseId: course._id,
-      lessonId: course.lessons[clicked]._id,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API}/api/mark-completed`,
+      {
+        courseId: course._id,
+        lessonId: course.lessons[clicked]._id,
+      }
+    );
     console.log(data);
     setCompletedLessons([...completedLessons, course.lessons[clicked]._id]);
   };
   const loadCompletedLessons = async () => {
-    const { data } = await axios.post(`/api/list-completed`, {
-      courseId: course._id,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API}/api/list-completed`,
+      {
+        courseId: course._id,
+      }
+    );
     // console.log("COMPLETED LESSONS => ", data);
     setCompletedLessons(data);
   };
 
   const markIncompleted = async () => {
     try {
-      const { data } = await axios.post(`/api/mark-incomplete`, {
-        courseId: course._id,
-        lessonId: course.lessons[clicked]._id,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/api/mark-incomplete`,
+        {
+          courseId: course._id,
+          lessonId: course.lessons[clicked]._id,
+        }
+      );
       console.log(data);
       const all = completedLessons;
       console.log("ALL => ", all);
@@ -124,16 +135,12 @@ const SingleCourse = () => {
                   borderRadius: "15px",
                 }}
               >
-                <div
-                  className="text-center p-3"
-                  style={{ fontSize: "2rem" }}
-                >
+                <div className="text-center p-3" style={{ fontSize: "2rem" }}>
                   Description:{" "}
                 </div>
                 <ReactMarkdown
                   children={course.lessons[clicked].content}
                   className="single-post p-3"
-                  
                 />
               </div>
             </>

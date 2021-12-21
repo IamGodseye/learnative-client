@@ -4,7 +4,7 @@ import { Context } from "../../context";
 import { Button, Tooltip } from "antd";
 import PersonIcon from "@material-ui/icons/Person";
 import { BoxLoading } from "react-loadingg";
-
+import { useRouter } from "next/router";
 import {
   SettingOutlined,
   UserSwitchOutlined,
@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import UserRoutes from "../../component/routes/UserRoutes";
 
 const BecomeInstructor = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const {
     state: { user },
@@ -22,8 +23,14 @@ const BecomeInstructor = () => {
   const becomeInstructor = () => {
     //console.log("become instructor");
     setLoading(true);
+    if (user === undefined || user === null) {
+      var s = "Login using your credentials";
+      toast.error(`⚠️ ${s}`);
+      router.push("/login");
+      return;
+    }
     axios
-      .post("/api/make-instructor")
+      .post(`${process.env.NEXT_PUBLIC_API}/api/make-instructor`)
       .then((res) => {
         console.log(res);
         window.location.href = res.data;

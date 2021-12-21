@@ -5,7 +5,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-
+import Head from "next/head";
 import Select from "react-dropdown-select";
 const Register = () => {
   const [name, setName] = useState("");
@@ -26,12 +26,15 @@ const Register = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post(`/api/register`, {
-        name,
-        email,
-        password,
-        school,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/register`,
+        {
+          name,
+          email,
+          password,
+          school,
+        }
+      );
       // console.table("Register responce", data);
       toast.success("✅ Registeration Successful... Please Login");
       setLoading(false);
@@ -39,15 +42,20 @@ const Register = () => {
       setEmail("");
       setPassword("");
       setSchool("");
+      router.push("/login");
     } catch (err) {
       var s = err.response.data;
-      toast.error(`❌ ${s}`);
+      toast.error(`⚠️ ${s}`);
       setLoading(false);
     }
   };
   const op = [{ name: "Satyaprakash" }, { name: "Sos" }];
   return (
     <>
+      <Head>
+        <title>Learnative - Register</title>
+        {/* Add meta data for better SEO */}
+      </Head>
       <h1 className="jumbotron text-center bg-primary square mb-3">Register</h1>
       <div className="container row col-md-12 pb-5 mx-auto pt-2">
         <img src="register.svg" className="col-md-6 mr-5 p-2" />
