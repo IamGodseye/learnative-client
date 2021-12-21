@@ -5,7 +5,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-import AXIOS from './API'
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +23,9 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const { data } = await AXIOS.post(`/api/login`, {
+      const url = `${process.env.NEXT_PUBLIC_API}/login`;
+      console.log(url);
+      const { data } = await axios.post(url, {
         email,
         password,
       });
@@ -75,7 +77,7 @@ const Login = () => {
               {loading ? <SyncOutlined spin className="mb-2" /> : "Submit"}
             </button>
           </form>
-          <p 
+          <p
             className="text-center pt-3"
             style={{
               fontWeight: "550",
