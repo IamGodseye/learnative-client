@@ -10,15 +10,15 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    if (dev) {
-      server.use(
-        "/api",
-        createProxyMiddleware({
-          target: "https://learnative-server.herokuapp.com",
-          changeOrigin: true,
-        })
-      );
-    }
+    // if (dev) {
+    server.use(
+      "/api",
+      createProxyMiddleware({
+        target: "https://learnative-server.herokuapp.com",
+        changeOrigin: true,
+      })
+    );
+    // }
     server.all("*", (req, res) => {
       return handle(req, res);
     });
