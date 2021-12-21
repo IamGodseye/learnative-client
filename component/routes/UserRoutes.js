@@ -21,7 +21,8 @@ const UserRoutes = ({ children, showNav = true }) => {
         `${process.env.NEXT_PUBLIC_API}/current-user`
       );
       console.log(data);
-      if (data.ok === true) setOk(true);
+      if (data.ok === true)
+      setOk(true);
     } catch (err) {
       console.log(err);
       setOk(false);
