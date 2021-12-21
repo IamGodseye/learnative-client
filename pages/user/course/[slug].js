@@ -26,13 +26,13 @@ const SingleCourse = () => {
   const { slug } = router.query;
   const loadCourse = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/api/user/course/${slug}`
+      `${process.env.NEXT_PUBLIC_API}/user/course/${slug}`
     );
     setCourse(data);
   };
   const markCompleted = async () => {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API}/api/mark-completed`,
+      `${process.env.NEXT_PUBLIC_API}/mark-completed`,
       {
         courseId: course._id,
         lessonId: course.lessons[clicked]._id,
@@ -43,7 +43,7 @@ const SingleCourse = () => {
   };
   const loadCompletedLessons = async () => {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API}/api/list-completed`,
+      `${process.env.NEXT_PUBLIC_API}/list-completed`,
       {
         courseId: course._id,
       }
@@ -55,7 +55,7 @@ const SingleCourse = () => {
   const markIncompleted = async () => {
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/api/mark-incomplete`,
+        `${process.env.NEXT_PUBLIC_API}/mark-incomplete`,
         {
           courseId: course._id,
           lessonId: course.lessons[clicked]._id,
