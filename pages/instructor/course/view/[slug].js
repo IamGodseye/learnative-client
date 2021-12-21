@@ -33,9 +33,12 @@ const CourseView = () => {
   }, [course]);
 
   const studentCount = async () => {
-    const { data } = await axios.post(`/api/instructor/student-count`, {
-      courseId: course._id,
-    });
+    const { data } = await axios.post(
+      `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
+      {
+        courseId: course._id,
+      }
+    );
     setStudents(data.length);
   };
   const router = useRouter();
@@ -46,7 +49,9 @@ const CourseView = () => {
     loadCourse();
   }, [slug]);
   const loadCourse = async () => {
-    const { data } = await axios.get(`/api/course/${slug}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/course/${slug}`
+    );
     setCourse(data);
   };
   const handleVideo = async (e) => {
@@ -62,7 +67,7 @@ const CourseView = () => {
       //progress bar
 
       const { data } = await axios.post(
-        `/api/course/video-upload/${course.instructor._id}`,
+        `${process.env.NEXT_PUBLIC_API}/course/video-upload/${course.instructor._id}`,
         videoData,
         {
           onUploadProgress: (e) => {
@@ -88,7 +93,7 @@ const CourseView = () => {
 
     try {
       const { data } = await axios.post(
-        `/api/course/lesson/${slug}/${course.instructor._id}`,
+        `${process.env.NEXT_PUBLIC_API}/course/lesson/${slug}/${course.instructor._id}`,
         values
       );
       setValues({ ...values, title: "", content: "", video: {} });
@@ -109,7 +114,7 @@ const CourseView = () => {
     try {
       setUploading(true);
       const { data } = await axios.post(
-        `/api/course/video-remove/${course.instructor._id}`,
+        `${process.env.NEXT_PUBLIC_API}/course/video-remove/${course.instructor._id}`,
         values.video
       );
       console.log(data);
@@ -129,7 +134,9 @@ const CourseView = () => {
         "Once you publish your course, it will be live for users to enroll"
       );
       if (!answer) return;
-      const { data } = await axios.put(`/api/course/publish/${course._id}`);
+      const { data } = await axios.put(
+        `${process.env.NEXT_PUBLIC_API}/course/publish/${course._id}`
+      );
       setCourse(data);
       toast.success("✅ Congrats! your course is now live");
     } catch (err) {
@@ -144,7 +151,9 @@ const CourseView = () => {
       if (!answer) return;
       toast("✅ Your course is unpublished");
 
-      const { data } = await axios.put(`/api/course/unpublish/${course._id}`);
+      const { data } = await axios.put(
+        `${process.env.NEXT_PUBLIC_API}/course/unpublish/${course._id}`
+      );
       setCourse(data);
     } catch (err) {
       toast.error("⚠️ Course unpublish failed... Try again");
@@ -160,14 +169,16 @@ const CourseView = () => {
             className="container-fluid row pt-1"
             style={{ marginRight: "0%", marginLeft: "0%" }}
           >
-            <div className="row media flex-box pt-2 col-md-12"  style={{ marginRight: "0%", marginLeft: "0%" }}>
+            <div
+              className="row media flex-box pt-2 col-md-12"
+              style={{ marginRight: "0%", marginLeft: "0%" }}
+            >
               <Avatar
                 className="col-md-4 text-center"
                 size={80}
                 src={course.image ? course.image.Location : "./Course.png"}
               />
 
-              
               <div className="col-md-12 col-sm-12 media-body">
                 <div className="row">
                   <div className="col  description">

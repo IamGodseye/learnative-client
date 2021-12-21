@@ -5,7 +5,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-
+import Head from "next/head";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +43,10 @@ const Login = () => {
   };
   return (
     <>
+      <Head>
+        <title>Learnative - Login</title>
+        {/* Add meta data for better SEO */}
+      </Head>
       <h1 className="jumbotron text-center bg-primary square">Login</h1>
       <div className="container row col-md-12 pb-5 mx-auto pt-2">
         <img src="login.svg" className="col-md-6 mr-2 p-2" />

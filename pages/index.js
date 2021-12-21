@@ -20,7 +20,7 @@ const Index = ({ courses }) => {
   return (
     <>
       <Head>
-        <title>Learnative</title>
+        <title>Learnative - Home</title>
         {/* Add meta data for better SEO */}
       </Head>
       <div

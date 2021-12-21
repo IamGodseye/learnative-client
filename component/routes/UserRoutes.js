@@ -10,14 +10,18 @@ const UserRoutes = ({ children, showNav = true }) => {
   const router = useRouter();
 
   useEffect(() => {
+    console.log("User routes");
     fetchUser();
   }, []);
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get("/api/current-user");
-      //       console.log(data);
-      if (data.ok) setOk(true);
+      console.log("FETCH USER =>>>");
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/current-user`
+      );
+      console.log(data);
+      if (data.ok === true) setOk(true);
     } catch (err) {
       console.log(err);
       setOk(false);

@@ -6,9 +6,14 @@ import {
   UilAward,
   UilChatInfo,
 } from "@iconscout/react-unicons";
+import Head from "next/head";
 const Landing = () => {
   return (
     <>
+      <Head>
+        <title>Learnative</title>
+        {/* Add meta data for better SEO */}
+      </Head>
       {/* <PropagateLoader size={35} className="mx-auto" />
       <br /> */}
 
@@ -160,7 +165,7 @@ const Landing = () => {
               friendly price
             </div>
             <div className="text-center" style={{ fontSize: "2rem" }}>
-              Only ₹1/month*
+              Only ₹10/month*
             </div>
             <div className="text-center" style={{ fontSize: "0.9rem" }}>
               *for each student
@@ -222,7 +227,7 @@ const Landing = () => {
               friendly price
             </div>
             <div className="text-center" style={{ fontSize: "2rem" }}>
-              Only ₹0*
+              Only ₹10/month
             </div>
             <div className="text-center" style={{ fontSize: "0.8rem" }}>
               *for each paid course sale 30% will be platform fee, including 3%

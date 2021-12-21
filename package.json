@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "keywords": [],
-  "proxy": "https://learnative-server.herokuapp.com",
   "author": "",
   "license": "ISC",
   "dependencies": {
