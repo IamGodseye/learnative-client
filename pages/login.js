@@ -29,7 +29,7 @@ const Login = () => {
         withCredentials: true,
         baseURL: process.env.NEXT_PUBLIC_API,
       });
-      const { data } = await axios.post(`/login`, {
+      const { data } = await instance.post(`/login`, {
         email,
         password,
       });
