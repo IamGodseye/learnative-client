@@ -40,8 +40,12 @@ const Provider = ({ children }) => {
       let res = error.response;
       if (res.status === 401 && res.config && !res.config.__isRetryRequest) {
         return new Promise((resolve, reject) => {
-          axios
-            .get(`${process.env.NEXT_PUBLIC_API}/logout`)
+          const instance = axios.create({
+            withCredentials: true,
+            baseURL: process.env.NEXT_PUBLIC_API,
+          });
+          instance
+            .get(`/logout`)
             .then((data) => {
               console.log("401 error => logout");
               dispatch({ type: "LOGOUT" });
@@ -60,9 +64,11 @@ const Provider = ({ children }) => {
   );
   useEffect(() => {
     const getCsrfToken = async () => {
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/csrf-token`
-      );
+      const instance = axios.create({
+        withCredentials: true,
+        baseURL: process.env.NEXT_PUBLIC_API,
+      });
+      const { data } = await instance.get(`/csrf-token`);
       console.log("CSRF", data);
       axios.defaults.headers["X-CSRF-Token"] = data.csrfToken;
     };
