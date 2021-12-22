@@ -25,11 +25,8 @@ const Login = () => {
       setLoading(true);
       const url = `${process.env.NEXT_PUBLIC_API}/login`;
       console.log(url);
-      const instance = axios.create({
-        withCredentials: true,
-        baseURL: process.env.NEXT_PUBLIC_API,
-      });
-      const { data } = await instance.post(`/login`, {
+
+      const { data } = await axios.post(url, {
         email,
         password,
       });

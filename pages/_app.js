@@ -11,10 +11,6 @@ import { Provider } from "../context";
 import axios from "axios";
 
 function MyApp({ Component, pageProps }) {
-  const AXIOS = axios.create({
-    baseURL: "https://learnative-server.herokuapp.com/api",
-    withCredentials: true,
-  });
   return (
     <>
       <Provider>
