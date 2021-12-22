@@ -25,16 +25,18 @@ const Login = () => {
       setLoading(true);
       const url = `${process.env.NEXT_PUBLIC_API}/login`;
       console.log(url);
-
-      const { data } = await axios.post(url, {
+      const instance = axios.create({
+        withCredentials: true,
+        baseURL: process.env.NEXT_PUBLIC_API,
+      });
+      const { data } = await axios.post(`/login`, {
         email,
         password,
       });
       console.table("Login responce", data);
       dispatch({ type: "LOGIN", payload: data });
       //toast.success("✅ Registeration Successful... Please Login");
-      window.localStorage.setItem("user", JSON.stringify(data.user));
-      window.localStorage.setItem("token", JSON.stringify(data.token));
+      window.localStorage.setItem("user", JSON.stringify(data));
       router.push("/user");
       //setLoading(false);
     } catch (err) {
