@@ -64,7 +64,7 @@ const Provider = ({ children }) => {
         `${process.env.NEXT_PUBLIC_API}/csrf-token`
       );
       console.log("CSRF", data);
-      axios.defaults.headers["X-CSRF-Token"] = data.csrfToken;
+      axios.defaults.headers["X-CSRF-Token"] = data.getCsrfToken;
     };
     getCsrfToken();
   }, []);
