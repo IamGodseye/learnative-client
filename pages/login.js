@@ -33,7 +33,8 @@ const Login = () => {
       console.table("Login responce", data);
       dispatch({ type: "LOGIN", payload: data });
       //toast.success("✅ Registeration Successful... Please Login");
-      window.localStorage.setItem("user", JSON.stringify(data));
+      window.localStorage.setItem("user", JSON.stringify(data.user));
+      window.localStorage.setItem("token", JSON.stringify(data.token));
       router.push("/user");
       //setLoading(false);
     } catch (err) {
