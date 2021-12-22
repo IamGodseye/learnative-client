@@ -11,11 +11,9 @@ const UserIndex = () => {
   const loadCourses = async () => {
     try {
       setLoading(true);
-      const instance = axios.create({
-        withCredentials: true,
-        baseURL: process.env.NEXT_PUBLIC_API,
-      });
-      const { data } = await instance.get(`/user-courses`);
+      const { data } = await axios.get(
+        `/user-courses`
+      );
       // if (data.ok && data.ok === false) return;
       setCourses(data);
       setLoading(false);
