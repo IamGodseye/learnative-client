@@ -17,12 +17,13 @@ const UserRoutes = ({ children, showNav = true }) => {
   const fetchUser = async () => {
     try {
       console.log("FETCH USER =>>>");
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/current-user`
-      );
+      const instance = axios.create({
+        withCredentials: true,
+        baseURL: process.env.NEXT_PUBLIC_API,
+      });
+      const { data } = await instance.get(`/current-user`);
       console.log(data);
-      if (data.ok === true)
-      setOk(true);
+      if (data.ok === true) setOk(true);
     } catch (err) {
       console.log(err);
       setOk(false);
