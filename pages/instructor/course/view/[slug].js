@@ -31,7 +31,6 @@ const CourseView = () => {
   useEffect(() => {
     course && studentCount();
   }, [course]);
-  const token = window.localStorage.getItem("token");
 
   const studentCount = async () => {
     const { data } = await axios.post(`/api/instructor/student-count`, {
