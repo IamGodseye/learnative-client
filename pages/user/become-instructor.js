@@ -30,7 +30,7 @@ const BecomeInstructor = () => {
       return;
     }
     axios
-      .post(`${process.env.NEXT_PUBLIC_API}/make-instructor`)
+      .post(`/api/make-instructor`)
       .then((res) => {
         console.log(res);
         window.location.href = res.data;

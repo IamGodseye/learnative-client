@@ -42,7 +42,8 @@ const Topnav = () => {
   const logout = async () => {
     dispatch({ type: "LOGOUT" });
     window.localStorage.removeItem("user");
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/logout`);
+    window.localStorage.removeItem("token");
+    const { data } = await axios.get(`/api/logout`);
     toast("✅" + data.message);
     router.push("/login");
   };
@@ -159,6 +160,10 @@ const Topnav = () => {
             <SubMenu
               className="float-right nav"
               //id="right"
+              style={{
+                marginLeft: "auto",
+                paddingRight: "2vw",
+              }}
               title={user && user.name}
               icon={<UilUser />}
             >

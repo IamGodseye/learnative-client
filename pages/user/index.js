@@ -11,9 +11,8 @@ const UserIndex = () => {
   const loadCourses = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(
-        `/user-courses`
-      );
+
+      const { data } = await axios.get(`/api/user-courses`, {});
       // if (data.ok && data.ok === false) return;
       setCourses(data);
       setLoading(false);

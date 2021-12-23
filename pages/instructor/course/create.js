@@ -31,12 +31,9 @@ const CourseCreate = () => {
     setValues({ ...values, loading: true });
     Resizer.imageFileResizer(file, 720, 500, "JPEG", 100, 0, async (uri) => {
       try {
-        let { data } = await axios.post(
-          `${process.env.NEXT_PUBLIC_API}/course/upload-image`,
-          {
-            image: uri,
-          }
-        );
+        let { data } = await axios.post(`/api/course/upload-image`, {
+          image: uri,
+        });
         console.log("IMAGE UPLOADED", data);
         setImage(data);
         setValues({ ...values, loading: false });
@@ -53,10 +50,7 @@ const CourseCreate = () => {
     // console.log("REMOVE IMAGE");
     try {
       setValues({ ...values, loading: true });
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/remove-image`,
-        { image }
-      );
+      const res = await axios.post(`/api/course/remove-image`, { image });
       setImage({});
       setPreview("");
       setUploadButtonText("Upload Image");
@@ -72,13 +66,10 @@ const CourseCreate = () => {
     e.preventDefault();
     // console.log(values);
     try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course`,
-        {
-          ...values,
-          image,
-        }
-      );
+      const { data } = await axios.post(`/api/course`, {
+        ...values,
+        image,
+      });
       toast.success("Great ! Now you can start adding lessons");
       router.push("/instructor");
     } catch (err) {
