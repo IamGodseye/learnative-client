@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { SyncOutlined } from "@ant-design/icons";
 import UserNav from "../nav/UserNav";
+
 const UserRoutes = ({ children, showNav = true }) => {
   const [ok, setOk] = useState(false);
 
@@ -16,12 +17,9 @@ const UserRoutes = ({ children, showNav = true }) => {
 
   const fetchUser = async () => {
     try {
+      // const token = window.localStorage.getItem("token");
       console.log("FETCH USER =>>>");
-      const instance = axios.create({
-        withCredentials: true,
-        baseURL: process.env.NEXT_PUBLIC_API,
-      });
-      const { data } = await instance.get(`/current-user`);
+      const { data } = await axios.get(`/api/current-user`);
       console.log(data);
       if (data.ok === true) setOk(true);
     } catch (err) {

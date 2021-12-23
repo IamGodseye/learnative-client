@@ -13,9 +13,7 @@ const InstructorIndex = () => {
   }, []);
 
   const loadCourses = async () => {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/instructor-courses`
-    );
+    const { data } = await axios.get(`/api/instructor-courses`);
     setCourses(data);
   };
 

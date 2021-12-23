@@ -22,6 +22,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "bootstrap4": "0.0.1-security",
+    "cookie-getter": "^2.0.0",
     "express": "^4.17.1",
     "firebase": "^9.1.2",
     "firebase-tools": "^9.20.0",

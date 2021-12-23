@@ -8,13 +8,8 @@ import Topnav from "../component/Topnav";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "../context";
-import axios from "axios";
 
 function MyApp({ Component, pageProps }) {
-  const AXIOS = axios.create({
-    baseURL: "https://learnative-server.herokuapp.com/api",
-    withCredentials: true,
-  });
   return (
     <>
       <Provider>
