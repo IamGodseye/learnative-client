@@ -50,7 +50,7 @@ const Provider = ({ children }) => {
               window.localStorage.removeItem("token");
               router.push("/login");
             })
-            .cathc((err) => {
+            .catch((err) => {
               console.log("AXIOS INTERCEPTORS ERR", err);
               reject(error);
             });
