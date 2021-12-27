@@ -70,23 +70,25 @@ const InstructorRevenue = () => {
             <small>For last 48 hours</small>
             <hr />
             <h4>
-              Payouts{" "}
-              {!loading ? (
-                <SettingOutlined
-                  className="float-right pointer"
-                  onClick={handlePayoutSettings}
-                  style={{ float: "right" }}
-                />
-              ) : (
+              Payouts {/* {!loading ? ( */}
+              <SettingOutlined
+                className="float-right pointer"
+                onClick={handlePayoutSettings}
+                style={{ float: "right" }}
+              />
+              {/* ) : (
                 <SyncOutlined
                   spin
                   className="float-right pointer"
                   style={{ float: "right" }}
                 />
-              )}
+              )} */}
             </h4>
             <small>
-              Update your stripe account details or view previous payouts.
+              {/* Update your stripe account details or view previous payouts. */}
+              Your revenue will be transferred to your account within 48 hours,
+              <br />
+              If you have any issues send an email to learnative.help@gmail.com
             </small>
           </div>
         </div>

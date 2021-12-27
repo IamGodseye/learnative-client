@@ -11,6 +11,7 @@ import { Provider } from "../context";
 
 function MyApp({ Component, pageProps }) {
   return (
+    
     <>
       <Provider>
         <ToastContainer position="top-center" transition={Flip} />

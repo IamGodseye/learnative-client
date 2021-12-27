@@ -5,6 +5,7 @@ import {
   UilBookReader,
   UilAward,
   UilChatInfo,
+  UilFileCheckAlt,
 } from "@iconscout/react-unicons";
 import Head from "next/head";
 const Landing = () => {
@@ -69,14 +70,34 @@ const Landing = () => {
         </div>
       </div>
 
-      <div className="mt-3 features row mx-auto">
+      <div
+        className="mt-3 features row mx-auto"
+        style={{
+          width: "70vw",
+          display: "flex",
+          justifyContent: "space-around",
+        }}
+      >
         <div
-          className="feature1 col-md-3 text-center p-1 mb-1"
+          className="text-center  mark mb-3"
+          style={{
+            fontSize: "xx-large",
+            fontWeight: "bold",
+            color: "#202020",
+            // margin: "0 auto",
+          }}
+        >
+          <UilFileCheckAlt />
+          Our Features
+        </div>
+        <div
+          className="feature1 col-md-5 text-center p-1 mb-4"
           style={{
             fontSize: "1rem",
             marginBottom: "50px",
             background: "#5465DF",
             color: "white",
+            borderRadius: "7px",
           }}
         >
           <div style={{ fontSize: "1.5rem" }}>
@@ -87,12 +108,13 @@ const Landing = () => {
         </div>
 
         <div
-          className="feature1 col-md-3 text-center p-1 mb-1"
+          className="feature1 col-md-5 text-center p-1 mb-4"
           style={{
             fontSize: "1rem",
             marginBottom: "40px",
             background: "#5465DF",
             color: "white",
+            borderRadius: "7px",
           }}
         >
           <div style={{ fontSize: "1.5rem" }}>
@@ -104,12 +126,13 @@ const Landing = () => {
         </div>
 
         <div
-          className="feature1 col-md-3 text-center p-1 mb-1"
+          className="feature1 col-md-5 text-center p-1 mb-4"
           style={{
             fontSize: "1rem",
             marginBottom: "40px",
             background: "#5465DF",
             color: "white",
+            borderRadius: "7px",
           }}
         >
           <div style={{ fontSize: "1.5rem" }}>
@@ -120,12 +143,13 @@ const Landing = () => {
           resulting in increased exposure for all the students.
         </div>
         <div
-          className="feature1 col-md-3 text-center p-1 mb-1"
+          className="feature1 col-md-5 text-center p-1 mb-4"
           style={{
             fontSize: "1rem",
             marginBottom: "40px",
             background: "#5465DF",
             color: "white",
+            borderRadius: "7px",
           }}
         >
           <div style={{ fontSize: "1.5rem" }}>
@@ -136,7 +160,12 @@ const Landing = () => {
         </div>
       </div>
       <div className=" row mt-4">
-        <div className="landing_subscription col-md-6 offset-md-3 mb-5">
+        <div
+          className="landing_subscription col-md-4  mb-5"
+          style={{
+            margin: "0 auto",
+          }}
+        >
           <h3 className="text-center">Subscription Model for Schools</h3>
           <img
             src="/landing_school.svg"
@@ -188,8 +217,13 @@ const Landing = () => {
           </a>
         </div>
       </div>
-      <div className="row mt-4">
-        <div className="landing_subscription col-md-6 offset-md-3">
+      <div className=" row mt-4">
+        <div
+          className="landing_subscription col-md-4 "
+          style={{
+            margin: "0 auto",
+          }}
+        >
           <h3 className="text-center">Subscription Model for Instructors</h3>
           <img
             src="/landing_creator.svg"

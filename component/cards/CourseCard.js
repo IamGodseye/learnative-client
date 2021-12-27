@@ -11,54 +11,56 @@ const CourseCard = ({ course }) => {
       <a>
         <Card
           className="mb-4 "
+          style={{
+            width: "300px",
+            height: "300px",
+          }}
           cover={
             <img
               src={image.Location}
               alt={name}
               style={{
-                height: "200px",
+                height: "150px",
                 objectFit: "cover",
               }}
-              className="p-1"
             />
           }
         >
-          <b>
-            <h2>{name}</h2>
-          </b>
-          <Tooltip title="Instructor">
-            <p
-              style={{
-                fontSize: "1rem",
-                background: "#005499",
-                color: "white",
-                borderColor: "#2e47ff",
-              }}
-              className="btn btn-block getting-started"
-            >
-              {" "}
-              by {instructor.name}
-            </p>
-          </Tooltip>
-          <Tooltip title="Category">
-            <Button
-              type="primary"
-              block
-              shape="square"
-              // count={category}
-              style={{
-                backgroundColor: "#2e47ff",
-                border: "2px solid black",
-                borderRadius: "10px",
-                fontSize: "1.2rem",
+          <div
+            style={{
+              fontSize: "large",
+              fontWeight: "bolder",
+            }}
+          >
+            {name}
+          </div>
 
-                height: "45px",
-              }}
-              className="mb-2 mt-2 getting-started"
-            >
-              {category}
-            </Button>
-          </Tooltip>
+          <p
+            style={{
+              fontSize: "small",
+
+              // background: "#005499",
+              color: "#777",
+              // borderColor: "#2e47ff",
+            }}
+          >
+            {" "}
+            by {instructor.name}
+          </p>
+          <div
+            // count={category}
+            style={{
+              // backgroundColor: "#2e47ff",
+              // border: "2px solid black",
+              // borderRadius: "10px",
+              fontSize: "medium",
+              fontWeight: "lighter",
+              // height: "45px",
+            }}
+          >
+            Rating 4.5 (1000)
+          </div>
+
           <b>
             <h4 className="pt-2">
               {paid

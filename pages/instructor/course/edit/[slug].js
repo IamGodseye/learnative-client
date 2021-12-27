@@ -19,6 +19,7 @@ const CourseEdit = () => {
     category: "",
     loading: false,
     lessons: [],
+    shortInfo: "",
   });
 
   const [preview, setPreview] = useState("");
@@ -30,7 +31,6 @@ const CourseEdit = () => {
   const [uploading, setUploading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [current, setCurrent] = useState({});
-
   const router = useRouter();
   const { slug } = router.query;
 

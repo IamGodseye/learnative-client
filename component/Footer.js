@@ -12,12 +12,13 @@ const Footer = () => {
       className="text-center"
       style={{
         marginTop: "50px",
+        width: "100vw",
       }}
     >
       <div
         className="row"
         style={{
-          backgroundColor: "#202040",
+          backgroundColor: "#202020",
           color: "white",
 
           overflow: "hidden",
@@ -46,9 +47,9 @@ const Footer = () => {
           </p>
         </div> */}
         <div
-          className="row pt-3 text-center"
+          className="row text-center"
           style={{
-            width: "100%",
+            // width: "100vw",
             textAlign: "center",
             margin: "0",
             padding: "0",
@@ -100,11 +101,11 @@ const Footer = () => {
         </div> */}
       </div>
       <div
-        className="row  pt-2 pb-2"
+        className="row"
         style={{
-          backgroundColor: "#202040",
+          backgroundColor: "#202020",
           color: "white",
-          //   width: "100vw",
+          // width: "100vw",
           overflow: "hidden",
         }}
       >

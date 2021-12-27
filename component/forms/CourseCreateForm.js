@@ -30,9 +30,21 @@ const CourseCreateForm = ({
               value={values.name}
               onChange={handleChange}
               autocomplete="off"
+              // required
             />
           </div>
-
+          <div className="form-group">
+            <input
+              type="text"
+              name="shortInfo"
+              className="form-control m-1"
+              placeholder="Short Info"
+              value={values.shortInfo}
+              onChange={handleChange}
+              autocomplete="off"
+              // required
+            />
+          </div>
           <div className="form-group">
             <textarea
               name="description"
@@ -42,6 +54,7 @@ const CourseCreateForm = ({
               className="form-control m-1"
               onChange={handleChange}
               placeholder="Course description  (markdown is supported)"
+              // required
             ></textarea>
             <a
               className="m-1"
@@ -70,6 +83,7 @@ const CourseCreateForm = ({
                   size="large"
                   value={values.paid}
                   onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
+                  // required
                 >
                   <Option value={true}>Paid</Option>
                   <Option value={false}>Free</Option>
@@ -100,6 +114,7 @@ const CourseCreateForm = ({
               value={values.category}
               onChange={handleChange}
               autocomplete="off"
+              // required
             />
           </div>
 
@@ -121,6 +136,7 @@ const CourseCreateForm = ({
                     onChange={handleImage}
                     accept="image/*"
                     hidden
+                    // required
                   />
                 </label>
                 {preview && (
@@ -148,7 +164,14 @@ const CourseCreateForm = ({
             <div className="col">
               <Button
                 onClick={handleSubmit}
-                disabled={values.loading || values.uploading}
+                disabled={
+                  values.loading ||
+                  values.uploading ||
+                  !values.category ||
+                  !values.description ||
+                  !values.shortInfo ||
+                  !values.name
+                }
                 className="btn btn-primary mt-2 getting-started"
                 style={{ backgroundColor: "#2E47FF", borderColor: "#2E47FF" }}
                 loading={values.loading}

@@ -110,8 +110,6 @@ const SingleCourse = () => {
                       <ReactPlayer
                         className="player mx-auto"
                         url={course.lessons[clicked].video.Location}
-                        width="70%"
-                        height="70%"
                         controls
                       />
                     </div>

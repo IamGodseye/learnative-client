@@ -9,11 +9,12 @@ const CourseCreate = () => {
   const [values, setValues] = useState({
     name: "",
     description: "",
-    price: "999",
+    price: "0",
     uploading: false,
     paid: true,
     category: "",
     loading: false,
+    shortInfo: "",
   });
 
   const [preview, setPreview] = useState("");

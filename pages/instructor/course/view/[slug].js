@@ -27,7 +27,10 @@ const CourseView = () => {
     title: "",
     content: "",
     video: {},
+    youtubeLink: "",
   });
+  const [youtubeLink, setYoutubeLink] = useState("");
+
   useEffect(() => {
     course && studentCount();
   }, [course]);
@@ -91,12 +94,18 @@ const CourseView = () => {
         `/api/course/lesson/${slug}/${course.instructor._id}`,
         values
       );
-      setValues({ ...values, title: "", content: "", video: {} });
+      setValues({
+        ...values,
+        title: "",
+        content: "",
+        video: {},
+        youtubeLink: "",
+      });
 
       setProgress(0);
       setUploadButtonText("Upload video");
       setVisible(false);
-
+      
       setCourse(data);
       toast.success("✅ Lesson added");
     } catch (err) {
@@ -273,6 +282,8 @@ const CourseView = () => {
                 handleVideo={handleVideo}
                 progress={progress}
                 handleVideoRemove={handleVideoRemove}
+                youtubeLink={youtubeLink}
+                setYoutubeLink={setYoutubeLink}
               />
             </Modal>
 
