@@ -102,7 +102,7 @@ const Topnav = () => {
             </Link>
           </Item>
         ) : (
-          <></>
+          ""
         )}
         <Item
           key="/"
