@@ -100,6 +100,7 @@ const SingleCourse = ({ course }) => {
           setPreview={setPreview}
           showModal={showModal}
           setShowModal={setShowModal}
+          description={course.description}
         />
       )}
     </>

@@ -10,6 +10,7 @@ const AddLessonForm = ({
   handleVideo,
   progress,
   handleVideoRemove,
+  youtubeLink,
 }) => {
   return (
     <div className="container pt-3">
@@ -43,12 +44,21 @@ const AddLessonForm = ({
                 <CloseCircleFilled className="text-danger ml-2 d-flex justify-content-center pt-4 pointer" />
               </span>
             </Tooltip>
-            
           )}
         </div>
         <div className="progressbar">
           {progress > 0 && <Progress percent={progress} steps={10} />}
         </div>
+        <input
+          type="text"
+          className="form-control square"
+          onChange={(e) =>
+            setValues({ ...values, youtubeLink: e.target.value })
+          }
+          value={values.youtubeLink}
+          placeholder="Youtube link"
+          autoFocus
+        />
         <Button
           onClick={handleAddLesson}
           className="col mt-3 btn-style"

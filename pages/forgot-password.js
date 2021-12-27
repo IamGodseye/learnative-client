@@ -1,10 +1,12 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
+import ReCAPTCHA from "react-google-recaptcha";
+
 import Head from "next/head";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +14,7 @@ const ForgotPassword = () => {
   const [code, setCode] = useState("");
   const [newPassword, setNewPassowrd] = useState("");
   const [loading, setLoading] = useState(false);
+  const reRef = useRef();
 
   //logged in ko nahi dikhana
   const {
@@ -26,7 +29,13 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post(`/api/forgot-password`, { email });
+      const token = await reRef.current.executeAsync();
+      reRef.current.reset();
+
+      const { data } = await axios.post(`/api/forgot-password`, {
+        email,
+        token,
+      });
       setSuccess(true);
       toast.success("✅ Check your email for the secret code");
       setLoading(false);
@@ -42,14 +51,11 @@ const ForgotPassword = () => {
     //return;
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/reset-password`,
-        {
-          email,
-          code,
-          newPassword,
-        }
-      );
+      const { data } = await axios.post(`/api/reset-password`, {
+        email,
+        code,
+        newPassword,
+      });
       setEmail("");
       setCode("");
       setNewPassowrd("");
@@ -75,6 +81,11 @@ const ForgotPassword = () => {
         <img src="forgot_password.svg" className="col-md-6 mr-5 p-2" />
         <div className="col-md-6 my-auto">
           <form onSubmit={success ? handleResetPassword : handleSubmit}>
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+              size="invisible"
+              ref={reRef}
+            />
             <input
               type="email"
               className="form-control mb-4 p-4"

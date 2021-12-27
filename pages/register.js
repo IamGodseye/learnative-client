@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
@@ -7,12 +7,15 @@ import { Context } from "../context";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Select from "react-dropdown-select";
+import ReCAPTCHA from "react-google-recaptcha";
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [school, setSchool] = useState("");
   const [loading, setLoading] = useState(false);
+  const reRef = useRef();
 
   const router = useRouter();
   const {
@@ -26,11 +29,14 @@ const Register = () => {
 
     try {
       setLoading(true);
+      const token = await reRef.current.executeAsync();
+      reRef.current.reset();
       const { data } = await axios.post(`/api/register`, {
         name,
         email,
         password,
         school,
+        token,
       });
       // console.table("Register responce", data);
       toast.success("✅ Registeration Successful... Please Login");
@@ -59,6 +65,11 @@ const Register = () => {
 
         <div className="col-md-6 my-auto">
           <form onSubmit={handleSubmit}>
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
+              size="invisible"
+              ref={reRef}
+            />
             <input
               type="text"
               className="form-control mb-4 p-4"

@@ -4,6 +4,7 @@ import { Badge, Modal } from "antd";
 import ReactPlayer from "react-player";
 import { Button } from "antd";
 import ReactMarkdown from "react-markdown";
+import { UilShoppingBag, UilAngleDoubleRight } from "@iconscout/react-unicons";
 import { LoadingOutlined, SafetyOutlined } from "@ant-design/icons";
 const SingleCourseJumbotron = ({
   course,
@@ -28,15 +29,46 @@ const SingleCourseJumbotron = ({
     category,
     updatedAt,
     lessons,
+    shortInfo,
   } = course;
 
   return (
-    <div className="jumbotron bg-primary square">
-      <div className="row">
-        <div className="col-md-8">
-          <h1 className="text-light font-weight-bold">{name}</h1>
-          <div className="lead">
-            {description && description.substring(0, 160)}....
+    <div
+    // className="jumbotron square" style={{ background: "#202020" }}
+    >
+      <div
+        className="row jumbotron square"
+        style={{
+          paddingLeft: "5vw",
+          paddingRight: "5vw",
+          zIndex: "1",
+          background: "#0d47a1",
+          marginBottom: "5vh",
+          color: "white",
+        }}
+      >
+        <div className="col-md-7">
+          <div
+            style={{
+              fontWeight: "bold",
+              fontSize: "xx-large",
+              // color: "black",
+            }}
+          >
+            {name}
+          </div>
+          <div
+            className="lead"
+            style={{
+              // color: "black",
+              fontSize: "medium",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            {/* {shortInfo} */}
+            {shortInfo.length != 0 ? shortInfo : "<=No Short Info=>"}
+            {/* {description && description.substring(0, 160)}.... */}
           </div>
 
           {/* <Badge
@@ -44,35 +76,60 @@ const SingleCourseJumbotron = ({
             style={{ backgroundColor: "#03a9f4" }}
             className="pb-4 mr-2"
           /> */}
-          <Button
-            type="primary"
-            block
-            shape="square"
+          {/* <div
+            style={{
+              fontSize: "1.2rem",
+              backgroundColor: "#202040",
+              color: "black",
+              border: "#202030",
+              height: "5vh",
+            }}
+          >
+            BestSeller
+          </div> */}
+          <div
             // count={category}
             style={{
-              backgroundColor: "#202040",
-              width: "30%",
-              minWidth: "90px",
-              border: "2px solid black",
-              borderRadius: "10px",
-              fontSize: "1.2rem",
-
-              height: "45px",
+              // color: "black",
+              fontWeight: "lighter",
+              fontSize: "medium",
+              marginBottom: "5px",
             }}
-            className="mb-2 mt-2"
           >
             {category}
-          </Button>
-          <p>Created by {instructor.name}</p>
+          </div>
           <p
             style={{
-              fontSize: "1rem",
+              // color: "black",
+              fontWeight: "lighter",
+              fontSize: "medium",
             }}
           >
-            {" "}
-            Last updated {new Date(updatedAt).toLocaleDateString()}
+            Created by {instructor.name}
           </p>
-          <Button
+          <div>
+            <span
+              style={{
+                // color: "black",
+                fontWeight: "medium",
+                fontSize: "medium",
+              }}
+            >
+              {" "}
+              Last updated {new Date(updatedAt).toLocaleDateString("en-IN")}
+            </span>
+            <span
+              style={{
+                // color: "black",
+                fontWeight: "medium",
+                fontSize: "medium",
+              }}
+            >
+              {" "}
+              Language - English Hindi
+            </span>
+          </div>
+          {/* <Button
             className="getting-started btn btn-block "
             style={{
               fontSize: "1.2rem",
@@ -85,9 +142,28 @@ const SingleCourseJumbotron = ({
             {paid
               ? currencyFormatter({ amount: price, currency: "inr" })
               : "Free"}
-          </Button>
+          </Button> */}
         </div>
-        <div className="col-md-4">
+      </div>
+      <div
+      // style={{
+      //   marginRight: "10vw",
+      // }}
+      >
+        <div
+          className="col-md-4 course-side"
+          style={{
+            background: "white",
+            border: "2px solid #777",
+            // height: "82vh",
+            zIndex: "5",
+            marginLeft: "auto",
+            marginRight: "7vw",
+            marginTop: "-300px",
+            paddingBottom: "20px",
+            boxShadow: "0px 5px 15px 5px rgba(90,90,90,0.37)",
+          }}
+        >
           {lessons[0].video && lessons[0].video.Location ? (
             <div
               onClick={() => {
@@ -104,42 +180,142 @@ const SingleCourseJumbotron = ({
               />
             </div>
           ) : (
-            <>
+            <div className="course-img">
               {" "}
-              <img src={image.Location} alt={name} className="img img-fluid" />
-            </>
-          )}
-          {loading ? (
-            <div className="d-flex justify-content-center">
-              <LoadingOutlined className="h1" />
+              <img
+                src={image.Location}
+                alt={name}
+                style={{
+                  backgroundSize: "cover",
+                }}
+                className="img img-fluid "
+              />
             </div>
-          ) : (
-            <Button
-              className="mb-3 mt-3"
-              type="danger"
-              block
-              shape="square"
-              // icon={<SafetyOutlined className="pb-3" />}
-              disabled={loading}
-              style={{
-                height: "5vh",
-                display: "flex",
-                backgroundColor: "#03045e",
-                borderColor: "#03045e",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onClick={paid ? handlePaidEnrollment : handleFreeEnrollment}
-            >
-              <SafetyOutlined className="" />
-
-              {user
-                ? enrolled.status
-                  ? "Go to course"
-                  : "Enroll"
-                : "Login to enroll"}
-            </Button>
           )}
+          <div
+            style={{
+              padding: "5%",
+            }}
+          >
+            <div
+              style={{
+                // marginTop: "5%",
+                fontSize: "x-large",
+                fontWeigth: "bold",
+              }}
+            >
+              {paid
+                ? currencyFormatter({ amount: price, currency: "inr" })
+                : "Free"}
+            </div>
+            <div>
+              <div
+                style={{
+                  fontSize: "large",
+                  fontWeight: "bold",
+                }}
+              >
+                This course includes:
+              </div>
+              <div>XX hrs of video content</div>
+              <div>XX Documents</div>
+              <div>LifeTime access</div>
+              <div>Certificate of completion</div>
+            </div>
+            {loading ? (
+              <div className="d-flex justify-content-center">
+                <LoadingOutlined className="h1" />
+              </div>
+            ) : (
+              <Button
+                className="mb-0 mt-2 enroll-btn"
+                type="danger"
+                block
+                shape="square"
+                // icon={<SafetyOutlined className="pb-3" />}
+                disabled={loading}
+                style={{
+                  height: "10vh",
+                  display: "flex",
+                  backgroundColor: "#03045e",
+                  borderColor: "#03045e",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={paid ? handlePaidEnrollment : handleFreeEnrollment}
+              >
+                {user ? (
+                  enrolled.status ? (
+                    <UilAngleDoubleRight
+                      style={{
+                        marginRight: "5px",
+                      }}
+                    />
+                  ) : (
+                    <UilShoppingBag
+                      style={{
+                        marginRight: "5px",
+                      }}
+                    />
+                  )
+                ) : (
+                  <UilShoppingBag
+                    style={{
+                      marginRight: "5px",
+                    }}
+                  />
+                )}
+                <div
+                  style={{
+                    fontSize: "x-large",
+                    letterSpacing: "2px",
+                  }}
+                >
+                  {user
+                    ? enrolled.status
+                      ? "Go to course"
+                      : "Enroll"
+                    : "Login first to enroll"}
+                </div>
+              </Button>
+            )}
+          </div>
+          <hr />
+          <div
+            style={{
+              paddingLeft: "5%",
+              paddingRight: "5%",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "large",
+                fontWeight: "bolder",
+              }}
+            >
+              Want Learnative for school?
+            </div>
+            <div>
+              {" "}
+              drop us an email at &nbsp;
+              <a
+                href="mailto:learnative.help@gmail.com"
+                className="text-center"
+                style={{ padding: "0" }}
+              >
+                <Button
+                  style={{
+                    borderColor: "#202030",
+                    color: "black",
+                    margin: "0 auto",
+                  }}
+                  // className="support-email"
+                >
+                  learnative.help@gmail.com
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

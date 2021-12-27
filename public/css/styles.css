@@ -1,7 +1,18 @@
+:root {
+  --alice-blue: #e3effbff;
+  --majorelle-blue: #5349e5;
+  --steel-blue: #6085a3ff;
+  --looks-black: #202040;
+  --dark-blue: #0d47a1;
+  --lightest-blue: #e3f2fd;
+  --gray: #eeeeee;
+}
 * {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Noto Sans", sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
   scroll-behavior: smooth;
 }
+
 body {
   overflow-x: hidden;
 }
@@ -19,10 +30,13 @@ body {
   padding: 3rem 1rem;
   margin-bottom: 0rem;
   border-radius: 0rem;
+  margin-top: 0rem;
   color: white;
-  -webkit-box-shadow: 0px 7px 7px 2px rgba(0, 0, 0, 0.58);
-  box-shadow: 0px 7px 7px 2px rgba(0, 0, 0, 0.58);
-  /* background: #4339ff; */
+  font-weight: bolder;
+  font-size: xx-large !important;
+  /* -webkit-box-shadow: 0px 7px 7px 2px rgba(0, 0, 0, 0.58); */
+  /* box-shadow: 0px 7px 7px 2px rgba(0, 0, 0, 0.58); */
+  background: #2e47ff;
   background-image: linear-gradient(
     to right bottom,
     #2e47ff,
@@ -31,6 +45,10 @@ body {
     #5a36ff,
     #652eff
   );
+  background-color: var(--lightest-blue);
+}
+.logout {
+  border-color: #f7273f !important;
 }
 /* .menu {
   display: flex !important;
@@ -44,9 +62,61 @@ body {
 }
 
 .top-nav {
+  min-width: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #7a7979 !important;
+}
+.top-nav:focus {
+  /* background-color: black !important; */
+  color: black;
+}
+.enroll-btn {
+  background-color: white !important;
+  color: black !important;
+  border-color: #465e56 !important;
+}
+.enroll-btn:hover {
+  background-color: #a9e4d0 !important;
+  color: black !important;
+}
+@media screen and (max-width: 820px) {
+  .course-side {
+    margin-top: 0px !important;
+    margin-right: 0 !important;
+  }
+  .lessons {
+    /* z-index: 5; */
+    margin-top: 0 !important;
+  }
+  .course-img {
+    /* background-color: #202030 !important; */
+  }
+  .course-img img {
+    width: 100% !important;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .top-nav {
+    margin-top: 2vh;
+    flex-direction: column;
+  }
+
+  .topnav-menu {
+    font-size: x-small;
+    height: 14vh;
+  }
+  .become {
+    display: none;
+  }
+  .index_username div {
+    font-size: large !important;
+  }
+  .topnav-logo {
+    display: none !important;
+  }
 }
 
 .course-preview {
@@ -137,6 +207,36 @@ body {
 
   background: white !important;
 }
+.logout {
+  border: 2px solid #f7273f !important;
+  font-size: 15px;
+  color: #f7273f !important;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: white !important;
+}
+.logout:active,
+.logout:hover {
+  background-color: #f7273f !important;
+}
+
+.mark {
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 225, 0, 0.1),
+    rgba(255, 225, 0, 0.7) 4%,
+    rgba(255, 225, 0, 0.3)
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 .btn-style1:active {
   background: #2a41e8 !important;
   color: white !important;
@@ -204,9 +304,9 @@ body {
   background: rgba(0, 0, 0, 0.05) !important;
 }
 .top-nav-op .ant-menu {
-  -webkit-box-shadow: 0px 10px 20px -7px rgba(0, 0, 0, 0.22);
+  /* -webkit-box-shadow: 0px 10px 20px -7px rgba(0, 0, 0, 0.22);
   box-shadow: 0px 10px 20px -7px rgba(0, 0, 0, 0.22);
-  margin-bottom: 50px !important;
+  margin-bottom: 50px !important; */
 }
 
 .shape {
@@ -222,6 +322,7 @@ body {
   padding: 10px;
 }
 .getting-started {
+  color: white !important;
   -webkit-box-shadow: 0px 8px 15px -5px #2e47ff;
   box-shadow: 0px 8px 15px -5px #2e47ff;
 }
@@ -241,14 +342,14 @@ body {
 .how-can-we-help:hover {
   transform: translateY(-10px);
   transition: 300ms ease-in-out;
-  -webkit-box-shadow: 3px 4px 20px 5px rgba(0, 0, 0, 0.54);
-  box-shadow: 3px 4px 20px 5px rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.26);
+  box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.26);
 }
 .how-can-we-help-1:hover {
   transform: translateY(-10px);
   transition: 300ms ease-in-out;
-  -webkit-box-shadow: 3px 4px 20px 5px rgba(0, 0, 0, 0.54);
-  box-shadow: 3px 4px 20px 5px rgba(0, 0, 0, 0.54);
+  -webkit-box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.26);
+  box-shadow: 0px 0px 14px 5px rgba(0, 0, 0, 0.26);
 }
 
 .ant-avatar-circle {
@@ -333,15 +434,15 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 7px;
   border: 2px solid #ababab;
   transition: 400ms ease-in-out;
   padding: 10px;
 }
 .landing_subscription:hover {
   border: 2px solid black;
-  -webkit-box-shadow: 8px 14px 25px 0px rgba(0, 0, 0, 0.68);
-  box-shadow: 8px 14px 25px 0px rgba(0, 0, 0, 0.68);
+  -webkit-box-shadow: 0px 9px 15px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 9px 15px 5px rgba(0, 0, 0, 0.25);
   transition: 400ms ease-in-out;
   transform: translateY(-10px);
 }

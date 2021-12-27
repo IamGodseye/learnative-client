@@ -14,7 +14,7 @@ app
     server.use(
       "/api",
       createProxyMiddleware({
-        target: process.env.NEXT_PUBLIC_API,
+        target: "http://localhost:5500",
         changeOrigin: true,
       })
     );

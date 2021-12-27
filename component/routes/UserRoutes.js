@@ -9,7 +9,7 @@ const UserRoutes = ({ children, showNav = true }) => {
   const [ok, setOk] = useState(false);
 
   const router = useRouter();
-
+  
   useEffect(() => {
     console.log("User routes");
     fetchUser();
