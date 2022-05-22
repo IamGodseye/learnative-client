@@ -10,7 +10,7 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    // if (dev) {
+    if (dev) {
     server.use(
       "/api",
       createProxyMiddleware({
@@ -18,7 +18,7 @@ app
         changeOrigin: true,
       })
     );
-    // }
+    }
     server.all("*", (req, res) => {
       return handle(req, res);
     });
