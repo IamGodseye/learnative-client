@@ -5,7 +5,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 import Head from "next/head";
 const ForgotPassword = () => {
@@ -81,11 +81,11 @@ const ForgotPassword = () => {
         <img src="forgot_password.svg" className="col-md-6 mr-5 p-2" />
         <div className="col-md-6 my-auto">
           <form onSubmit={success ? handleResetPassword : handleSubmit}>
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
               size="invisible"
               ref={reRef}
-            />
+            /> */}
             <input
               type="email"
               className="form-control mb-4 p-4"

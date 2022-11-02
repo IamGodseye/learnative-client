@@ -7,7 +7,7 @@ import { Context } from "../context";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Select from "react-dropdown-select";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -65,11 +65,11 @@ const Register = () => {
 
         <div className="col-md-6 my-auto">
           <form onSubmit={handleSubmit}>
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
               size="invisible"
               ref={reRef}
-            />
+            /> */}
             <input
               type="text"
               className="form-control mb-4 p-4"
