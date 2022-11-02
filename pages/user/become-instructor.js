@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Context } from "../../context";
 import { Button, Tooltip } from "antd";
 import PersonIcon from "@material-ui/icons/Person";
-import { BoxLoading } from "react-loadingg";
+// import { BoxLoading } from "react-loadingg";
 import { useRouter } from "next/router";
 import {
   SettingOutlined,

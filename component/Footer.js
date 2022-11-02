@@ -1,9 +1,10 @@
 import { React } from "react";
 import { Button } from "antd";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import { UilLinkedin } from '@iconscout/react-unicons'
+import { UilInstagramAlt } from '@iconscout/react-unicons'
+import { UilFacebook } from '@iconscout/react-unicons'
+import { UilTwitter } from '@iconscout/react-unicons'
+
 import Link from "next/link";
 
 const Footer = () => {
@@ -116,10 +117,10 @@ const Footer = () => {
           {" "}
           <p style={{ marginBottom: "10px" }}>Follow us on</p>
           <p>
-            <TwitterIcon id="social-icon" />
-            <InstagramIcon id="social-icon" />
-            <LinkedInIcon id="social-icon" />
-            <FacebookIcon id="social-icon" className="footer-icon" />
+            <UilTwitter id="social-icon" />
+            <UilInstagramAlt id="social-icon" />
+            <UilLinkedin id="social-icon" />
+            <UilFacebook id="social-icon" className="footer-icon" />
           </p>
         </div>
         <div className="text-center">
