@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Context } from "../../context";
 import { Button, Tooltip } from "antd";
-import PersonIcon from "@material-ui/icons/Person";
+import { UilUserSquare } from '@iconscout/react-unicons'
 // import { BoxLoading } from "react-loadingg";
 import { useRouter } from "next/router";
 import {
@@ -81,7 +81,7 @@ const BecomeInstructor = () => {
                   //  <BoxLoading className="icon" />
                   <LoadingOutlined className="icon" />
                 ) : (
-                  <PersonIcon className="icon" />
+                  <UilUserSquare className="icon" />
                 )}
                 {loading ? "Processing...." : "Getting Started"}
               </Button>

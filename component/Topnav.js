@@ -21,8 +21,7 @@ import {
   UilFolderPlus,
   UilUserSquare,
 } from "@iconscout/react-unicons";
-// import CreateNewFolderIcon from "@material-ui/icons/CreateNewFolder";
-// import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
 import { useState, useEffect, useContext } from "react";
 
 import { Context } from "../context/index";
@@ -107,7 +106,7 @@ const Topnav = () => {
         <Item
           key="/"
           onClick={(e) => setCurrent(e.key)}
-          //icon={<AppstoreOutlined />}
+        //icon={<AppstoreOutlined />}
         >
           <Link href="/">
             <a className="top-nav nav topnav-btn">
@@ -121,7 +120,7 @@ const Topnav = () => {
           <Item
             key="/instructor/course/create"
             onClick={(e) => setCurrent(e.key)}
-            //icon={<LoginOutlined />}
+          //icon={<LoginOutlined />}
           >
             <Link href="/instructor/course/create">
               <a className="top-nav nav">
@@ -134,7 +133,7 @@ const Topnav = () => {
           <Item
             key="/user/become-instructor"
             onClick={(e) => setCurrent(e.key)}
-            //icon={<LoginOutlined />}
+          //icon={<LoginOutlined />}
           >
             <Link href="/user/become-instructor">
               <a className="top-nav nav topnav-btn">
@@ -150,7 +149,7 @@ const Topnav = () => {
             <Item
               key="/login"
               onClick={(e) => setCurrent(e.key)}
-              //icon={<LoginOutlined />}
+            //icon={<LoginOutlined />}
             >
               <Link href="/login">
                 <a className="top-nav nav">
@@ -162,7 +161,7 @@ const Topnav = () => {
             <Item
               key="/register"
               onClick={(e) => setCurrent(e.key)}
-              //icon={<UserAddOutlined />}
+            //icon={<UserAddOutlined />}
             >
               <Link href="/register">
                 <a className="top-nav nav">
@@ -238,7 +237,7 @@ const Topnav = () => {
             key="/instructor"
             onClick={(e) => setCurrent(e.key)}
             className="float-right nav"
-            //icon={<LoginOutlined />}
+          //icon={<LoginOutlined />}
           >
             <Link href="/instructor">
               <a className="top-nav">

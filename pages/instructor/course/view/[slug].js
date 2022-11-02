@@ -11,7 +11,7 @@ import {
   QuestionOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import AddToQueueIcon from "@material-ui/icons/AddToQueue";
+
 import ReactMarkdown from "react-markdown";
 import AddLessonForm from "../../../../component/forms/AddLessonForm";
 import { toast } from "react-toastify";
@@ -105,7 +105,7 @@ const CourseView = () => {
       setProgress(0);
       setUploadButtonText("Upload video");
       setVisible(false);
-      
+
       setCourse(data);
       toast.success("✅ Lesson added");
     } catch (err) {
